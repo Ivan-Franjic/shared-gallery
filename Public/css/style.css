@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  display: block;
+  position: relative;
+  background: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+.login-body, .register-body{
+    background-image: url("../images/blu.svg");
+}
+
+.login{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 400px;
+  padding: 40px 30px 44px;
+  background-color: #f1f1f1;
+  color: black;
+  text-align: center;
+  border-radius: 1.25rem;
+}
+
+.login > h2{
+    font-size: 30px;
+}
+
+.register{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 500px;
+  padding: 40px 30px 44px;
+  background-color: #f1f1f1;
+  color: black;
+  text-align: center;
+  border-radius: 1.25rem;
+}
+
+.login-form, .register-form{
+    width: 260px;
+    margin: 0;
+    display: grid;
+}
+
+.login-form > input, .register-form > input{
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    font-size: 15px;
+    padding: 0 16px;
+    margin-left: -10px;
+    border-radius: 1.25rem;
+    transition: all 0.375s;
+}
+
+.login-form > a{
+    margin-left: -10px;
+    color: #10639a;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.register-form > a{
+  margin-left: -10px;
+  color: #10639a;
+  text-decoration: none;
+  margin-top: -5px;
+}
+
+.login-form > input:hover, .register-form > input:hover{
+    border: 2px solid #10449A;
+}
+
+.remember-me{
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#btnlogin{
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    margin-left: -10px;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    background: #10639a;
+    color: #ebebeb;
+    border: 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.375s;
+
+}
+
+#btnregister{
+  cursor: pointer;
+    width: 100%;
+    height: 50px;
+    margin-left: -10px;
+    margin-top: 20px;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    background: #10639a;
+    color: #ebebeb;
+    border: 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.375s;
+}
+
+#btnlogin:hover, #btnregister:hover{
+    background: #1271b1;
+}
+
+.home{
+  margin-left: 300px;
+}
+
+.management{
+  margin-left: 300px;
+}
+
+.myaccount{
+  margin-left: 300px;
+}
+
+.editpass, .btnedit{
+  margin-left: 300px;
+}
+
+  
+  /* On screens that are less than 700px wide, make the sidebar into a topbar 
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }*/
+  
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally 
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }*/
+
+  .sidebar{
+    display: block;
+    width: 250px;
+    background: #06224e;
+    background: linear-gradient(to left #06224e 50%, #3E2F65 50%);
+    height: auto;
+    position: fixed;
+    
+}
+
+.sidebar .sidebar-logo{
+    font-size: 20px;
+    text-align: right;
+    background: #06224e;
+    border-bottom: 2px solid #1271b170;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.sidebar .sidebar-logo a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.sidebar .sidebar-logo img{
+    width: 50px;
+    height: 50px;
+    padding: 4px;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+}
+
+.sidebar ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: #FFFFFF;
+    display: flex;
+    column-gap: 14px;
+}
+
+.sidebar .sidebar-items{
+    background: #06224e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100vh;
+    
+}
+
+.sidebar .sidebar-items-list{
+    padding: 10px 18px;
+    margin:2px 0px;
+    
+}
+.sidebar .sidebar-items-list:hover{
+    background: #1271b170;
+    border-left: 4px solid #1271b1;  
+    cursor: pointer;  
+}
+
+
+.sidebar .sidebar-items-list i{
+    font-size: 24px;
+}
+
+/*****Active ***/
+
+.sidebar.active{
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    background: transparent;
+    height: 100vh;
+}
+
+.sidebar.active .sidebar-logo{
+    padding: 8px;
+    border-bottom: 2px solid #1271b1;
+    
+}
+.sidebar.active .sidebar-logo a{
+    display: none;
+}
+.sidebar.active .sidebar-logo img{
+    width: 48px;
+    height: 48px;
+    padding: 0px;
+    display: block;
+}
+
+
+.sidebar.active .sidebar-items .sidebar-items-list p{
+    display: none;
+}
+
+.sidebar.active .sidebar-toggle p{
+    display: none;
+}
+
+
+/***Scrollbar **/
+::-webkit-scrollbar {
+    width: 8px;
+   
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #EFEAFC; 
+    
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1271b1; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1169a3; 
+  }
+
+
