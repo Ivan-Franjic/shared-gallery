@@ -1,0 +1,22 @@
+<?php include INCLUDE_PATH .'/header.phtml'; ?>
+<body class="login-body">
+    <div class="login">
+        <h2>Login</h2>
+        <form action="<?= URL_ROOT; ?>login/submit" method="POST" class="login-form">
+            <input type="email" id="email" name="email" placeholder="Email" required="required" 
+            value="<?= isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : ''; ?>"><br> 
+            <small class="text-danger"><?= isset($_SESSION['form_errors']['login']) ? $_SESSION['form_errors']['login'] : ''; ?></small>
+            <input type="password" id="password" name="password" placeholder="Password" required="required"><br>
+            <!--<field class="remember-me">
+            <label for="remember_me" >Remember me?</label>
+            <input type="checkbox" id="remember-me" name="remember_me">
+            </field>-->
+            <input id="btnlogin" type="submit" value="Login">
+            <!--<button type="submit" id="btnlogin">LOGIN</button><br>-->
+            <a href="/shared-gallery/register">Don't have an account?</a>
+        </form>
+        
+    </div>
+    
+</body>
+<?php include INCLUDE_PATH .'/footer.phtml'; ?>
