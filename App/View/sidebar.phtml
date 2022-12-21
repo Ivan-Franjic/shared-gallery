@@ -1,0 +1,45 @@
+
+<?php 
+    if(\Core\Auth::getInstance()->isLoggedIn()):?>
+<div class="sidebar">
+    <div class="sidebar-logo">
+    <img src="images/user.jpg">
+    <p><?= \Core\Auth::getInstance()->getCurrentUser()->getUsername(); ?></p>
+        <a href="/shared-gallery/myaccount">Myaccount</a>
+    </div>
+    <ul class="sidebar-items">
+        <li class="sidebar-items-list">
+            <a href="management">
+                <i class='bx bxs-dashboard'></i>
+                <p>Management</p>
+            </a>
+        </li>
+        <li class="sidebar-items-list">
+            <a href="login/logoutSubmit">
+                <i class='bx bx-log-out'></i>
+                <p>Logout</p>
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>
+<?php else: ?>
+
+<div class="sidebar">
+    <div class="sidebar-logo">
+    <img src="images/user.jpg">
+    <p>Welcome</p>
+        <a href="/shared-gallery/login">Login</a>
+    </div>
+    <ul class="sidebar-items">
+        <li class="sidebar-items-list">
+            <a href="">
+                <i class='bx bx-home-alt-2'></i>
+                <p>Home</p>
+            </a>
+        </li>
+    </ul>
+    </div>
+    
+</div>
+<?php endif; ?>

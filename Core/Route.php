@@ -21,7 +21,6 @@ class Route
         $this->register('GET', '500', 'Pages@serverError');
 
         $this->register('GET', 'management', 'Management@management');
-        //$this->register('GET', 'myaccount', 'Myaccount@myaccount');
 
         $this->register('GET', 'login', 'Pages@login');
         $this->register('GET', 'register', 'Pages@register');

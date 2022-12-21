@@ -1,0 +1,22 @@
+<?php include INCLUDE_PATH .'/header.phtml'; ?>
+<body class="register-body">
+    <div class="register">
+        <h2>Register</h2>
+        <form action="<?= URL_ROOT; ?>register/submit" method="POST" class="register-form">
+            <input type="text" value="<?= isset($_SESSION['form_data']['username']) ? $_SESSION['form_data']['username'] : ''; ?>" 
+            id="username" name="username" placeholder="Username" required="required"><br>
+            <small class="text-danger"><?= isset($_SESSION['form_errors']['username']) ? $_SESSION['form_errors']['username'] : ''; ?></small>
+            <input type="email" value="<?= isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : ''; ?>" 
+            id="email" name="email" placeholder="Email" required="required"><br>
+            <small class="text-danger"><?= isset($_SESSION['form_errors']['email']) ? $_SESSION['form_errors']['email'] : ''; ?></small>
+            <input type="password" id="password" name="password" placeholder="Password" required="required"><br>
+            <small class="text-danger"><?= isset($_SESSION['form_errors']['password']) ? $_SESSION['form_errors']['password'] : ''; ?></small>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required="required">
+            <small class="text-danger"><?= isset($_SESSION['form_errors']['confirm-password']) ? $_SESSION['form_errors']['confirm-password'] : ''; ?></small>
+            <input type="submit" id="btnregister" value="Register" /><br>
+            <a href="/shared-gallery/login">Already have an account? Sign in here.</a>
+        </form>
+    </div>
+    
+</body>
+<?php include INCLUDE_PATH .'/footer.phtml'; ?>
