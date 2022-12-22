@@ -1,0 +1,27 @@
+<?php include INCLUDE_PATH .'/header.phtml'; ?>
+<body>
+<?php include INCLUDE_PATH .'/sidebar.phtml'; ?>
+<div class="management">
+        <table class="table-management">
+            <thead class="table-head-management">
+                <th>Username</th>
+                <th>Email</th>
+                <th>Photos</th>
+            </thead>
+        <?php foreach ($data['gallery'] as $user): ?>
+            <tbody>
+                <tr>
+                    <td> <?=$user->getusername(); ?></td>
+                    <td> <?=$user->getemail(); ?></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <?php endforeach;?>
+        </table>
+        
+    </div>
+    
+    
+</body>
+<?php include INCLUDE_PATH .'/footer.phtml'; ?>
+
