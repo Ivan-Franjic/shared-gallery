@@ -14,6 +14,10 @@
             <?php endforeach;?>
         </div>
                 <a class="btnedit" href="/shared-gallery/myaccount/edit/<?= $user->id; ?>">Edit</a>
+                <form action="<?= URL_ROOT; ?>myaccount/removeSubmit/<?= $user->id; ?>" method="POST" class="delete-form">
+                    <button type="submit" class="remove-acc-btn">Remove account</button>
+                </form>
+                
     </body>       
 
 <?php include_once INCLUDE_PATH . 'footer.phtml'; ?>

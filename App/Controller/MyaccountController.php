@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Model\User;
+use App\Model\Management;
 use App\Validation\MyaccountValidator;
 use Core\Input;
 
@@ -70,5 +71,17 @@ class MyaccountController extends AbstractController
 
             //$this->redirect('Myaccount/edit');
         //}
+    }
+
+    public function removeSubmitAction($id)
+    {
+        if ($this->auth->getCurrentUser() === null || !$this->auth->isLoggedIn())
+            {
+                $this->redirect('');
+            }
+            
+        User::delete('id', $id);
+        Management::delete('user_id', $id);
+        $this->redirect('/');
     }
 }

@@ -37,6 +37,7 @@ class Route
         $this->register('GET', 'myaccount', 'Myaccount@index');
         $this->register('GET','myaccount/edit/{id}','Myaccount@edit');
         $this->register('POST', 'myaccount/updatePasswordSubmit/{id}', 'Myaccount@updatePasswordSubmit');
+        $this->register('POST', 'myaccount/removeSubmit/{id}', 'Myaccount@removeSubmit');
     }
 
     private function register(string $method = 'GET', string $url = '/', string $controller = 'Pages'): void

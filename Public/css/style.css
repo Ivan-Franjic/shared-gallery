@@ -87,6 +87,10 @@ body{
     border: 2px solid #10449A;
 }
 
+.delete-form{
+  margin-left: 300px;
+}
+
 .remember-me{
     margin-bottom: 15px;
     width: 100%;
