@@ -30,19 +30,15 @@ class Management extends AbstractModel
 
     public static function getPhotosNbr()
     {
-        $ssql = "SELECT g.user_id, COUNT(*) FROM gallery g GROUP BY g.user_id";
+        $ssql = "SELECT * FROM gallery";
         
         $db = Connection::getInstance();
 
         $stmt = $db->prepare($ssql);
         $stmt->execute();
+        $count=$stmt->rowCount();
 
-        $models = [];
-        while($row = $stmt->fetch())
-        {
-            $models[] = static::createObject($row);
-        }
-        return $models;
+        return $count;
     }
 
 }

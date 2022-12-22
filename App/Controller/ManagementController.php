@@ -25,6 +25,14 @@ class ManagementController extends AbstractController
         
     }
 
+    public function showphotosAction():void
+    {
+        $res=Management::getPhotosNbr();
+        
+        echo json_encode($res);
+        
+    }
+
     
 
    

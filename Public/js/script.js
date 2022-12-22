@@ -17,3 +17,14 @@ sidebarActive.addEventListener("click", function(){
       toggle.classList.remove("bx-chevrons-right");
     }
 });*/
+
+$(document).on('click','#btnimagenbr',function(e){
+  $.ajax({    
+    type: "GET",
+    url: "/shared-gallery/test",             
+    dataType: "html",                  
+    success: function(response){     
+        $("#table-container").html(response); 
+    }
+});
+});
