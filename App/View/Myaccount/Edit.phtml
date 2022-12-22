@@ -1,0 +1,32 @@
+<?php include INCLUDE_PATH .'/header.phtml'; ?>
+<body>
+    <div class="editpass">
+        <h5 class="display-5">Change Password</h5>
+
+        <?php if (isset($message)): ?>
+            <div>
+                <p class="alert-danger pt-2 pb-2 pl-2">
+                    <?php echo $message; ?>
+                </p>
+            </div>
+        <?php endif ?>
+
+        <form action="<?= URL_ROOT;?><?= "myaccount/updatePasswordSubmit/" . $data['users']->getid();?>" method="post">
+            <div class="form-group col-md-6">
+                <label for="old_password">Old Password</label>
+                <input type="password" class="form-control mb-4" required>
+
+                <hr>
+                <label for="new_password">New Password</label>
+                <input type="password" id="password"
+                        class="form-control  <?= isset($_SESSION['form_errors']['password']) ? 'is-invalid' : ''; ?>"
+                        name="password" placeholder="Password" required>
+                <small class="text-danger"><?= isset($_SESSION['form_errors']['password']) ? $_SESSION['form_errors']['password'] : ''; ?></small>
+            </div>
+
+            <input class="btn btn-primary btn-block my-3" type="submit" value="Update">
+        </form>
+    </div>
+</body>
+
+<?php include INCLUDE_PATH .'/footer.phtml'; ?>
