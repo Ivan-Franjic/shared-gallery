@@ -33,7 +33,7 @@ class LoginController extends AbstractController
             $user = User::getOne('email', $post['email']);
             
             $this->auth->login($user);
-            $this->redirect('management');
+            $this->redirect('');
         //}
         //else
         //{

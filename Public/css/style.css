@@ -14,8 +14,15 @@ body{
   
 }
 
+.logo{
+  margin: 15px;
+  float: right;
+  height: 70px;
+  width: auto; /* correct proportions to specified height */
+}
+
 .login-body, .register-body{
-    background-image: url("../images/blu.svg");
+    background-image: url("../images/background.svg");
 }
 
 .login{
