@@ -13,7 +13,9 @@
         </div>
             <?php endforeach;?>
         </div>
-                <a class="btnedit" href="/shared-gallery/myaccount/edit/<?= $user->id; ?>">Edit</a>
+                <a href="/shared-gallery/myaccount/edit/<?= $user->id; ?>">
+                <button class="edit-btn">Edit</button>
+            </a>
                 <form action="<?= URL_ROOT; ?>myaccount/removeSubmit/<?= $user->id; ?>" method="POST" class="delete-form">
                     <button type="submit" class="remove-acc-btn">Remove account</button>
                 </form>
