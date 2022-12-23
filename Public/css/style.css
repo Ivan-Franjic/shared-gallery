@@ -9,7 +9,7 @@
 body{
   display: block;
   position: relative;
-  background: #ffffff;
+  background-image: url("../images/background2.svg");
   font-family: 'Poppins', sans-serif;
   
 }
