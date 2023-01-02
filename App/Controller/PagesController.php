@@ -13,7 +13,17 @@ class PagesController extends AbstractController
 {
     public function indexAction(): void
     {
-        $this->view->render('Pages/Home');
+        if(isset($_COOKIE['email']) && isset($_COOKIE['password']))
+        {
+            $_SESSION['email'] = $_COOKIE['email'];
+            $user = User::getOne('email', $_SESSION['email']);
+            $this->auth->login($user);
+            $this->view->render('Pages/Home');
+        }
+        else{
+            $this->view->render('Pages/Home');
+        }
+       
     }
 
     public function loginAction(): void

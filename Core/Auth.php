@@ -43,6 +43,9 @@ class Auth
     public function logout(): void
     {
         unset($_SESSION['user_id'], $this->currentUser);
+	    // Remove cookie
+	    setcookie('email', '', 0, "/");
+	    setcookie('password', '', 0, "/");
     }
 
     public function isLoggedIn(): bool

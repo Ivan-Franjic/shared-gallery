@@ -23,30 +23,34 @@ class LoginController extends AbstractController
         $validator = new LoginValidator();
         $post = Input::validatePost();
 
-        //if ($this->auth->isLoggedIn())
-        //{
-           // return;
-        //}
+        if ($this->auth->isLoggedIn())
+        {
+            return;
+        }
 
-        //if ($validator->validate($post))
-        //{
+        if ($validator->validate($post))
+        {
             $user = User::getOne('email', $post['email']);
-            
-            $this->auth->login($user);
-            $this->redirect('');
-        //}
-        //else
-        //{
+            if($post['remember-me'] != NULL) {
+                setcookie('email', $post['email'], time() + (86400 * 30), "/");
+                setcookie('password', $post['password'], time() + (86400 * 30), "/");
+                $this->auth->login($user);
+                $this->redirect('');
+            }
+            else{
+                $this->auth->login($user);
+                $this->redirect('');
+            }
+  
+        }
+        else
+        {
             // Pass all discovered errors and valid data to session and redirect back to form
-            //$this->session->setFormData($validator->getData());
-            //$this->session->setFormErrors($validator->getErrors());
-            //$this->view->render('Management/Management', [
-                //'gallery'  => Management::getAll(),
-    
-            //]);
-            //$this->view->render("Management/management");
-            //$this->redirect('login');
-        //}
+            $this->session->setFormData($validator->getData());
+            $this->session->setFormErrors($validator->getErrors());
+            
+            $this->redirect('login');
+        }
     }
 
     public function logoutSubmitAction()
