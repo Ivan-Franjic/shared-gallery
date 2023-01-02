@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/shared-gallery/Public/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Shared gallery</title>
+</head>
+
+<body>
+
+<?php 
+    if(\Core\Auth::getInstance()->isLoggedIn()):?>
+<div class="sidebar">
+    <div class="sidebar-logo">
+    <img src="/shared-gallery/Public/images/user.jpg">
+    <p><?= \Core\Auth::getInstance()->getCurrentUser()->getUsername(); ?></p>
+        <a href="/shared-gallery/myaccount">Myaccount</a>
+    </div>
+    <ul class="sidebar-items">
+    <li class="sidebar-items-list">
+            <a href="/shared-gallery">
+                <i class='bx bx-home-alt-2'></i>
+                <p>Home</p>
+            </a>
+        </li>
+        <li class="sidebar-items-list">
+            <a href="/shared-gallery/management">
+                <i class='bx bxs-dashboard'></i>
+                <p>Management</p>
+            </a>
+        </li>
+        <li class="sidebar-items-list">
+            <a href="/shared-gallery/login/logoutSubmit">
+                <i class='bx bx-log-out'></i>
+                <p>Logout</p>
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>
+<?php endif; ?>
+<span class="album-title"><?= \Core\Auth::getInstance()->getCurrentUser()->getUsername(); ?>'s album</span>
+<div class="album">
+    <?php foreach ($data['gallery2'] as $user): ?>
+    <div class="album-images">
+    
+        <img id="img" class="album-images-image" src="/shared-gallery/Public/images/<?=$user->getimage(); ?>">
+        <form action="<?= URL_ROOT; ?>album/remove/<?= $user->id; ?>" method="POST">
+        <?php if(\Core\Auth::getInstance()->getCurrentUser()->getid()==$user->user_id):?>
+        <input class="overlay" onClick="return confirm('Delete image?')" type="submit" value="Remove"/>
+        <?php endif; ?>
+        </form>
+    </div>
+    <?php endforeach;?>
+    
+    
+</div>
+
+
+
