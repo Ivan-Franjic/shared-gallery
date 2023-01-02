@@ -16,39 +16,55 @@ class MyaccountValidator extends AbstractValidator
 
     public function validateUpdatedPassword(array $data): bool
     {
-        $this->validatePassword($data['password']);
+        $this->validatePassword($data['password'], $data['old-password']);
 
         return empty($this->getErrors());
     }
 
-    private function validatePassword(string $password): void
+    private function validatePassword(string $password, string $oldpassword): void
     {
-        if (!empty($password))
+        $oldPassword=\Core\Auth::getInstance()->getCurrentUser()->getpassword();
+
+        if(!empty($oldpassword))
         {
-            if (strlen($password) < 8)
+            if($oldpassword!=$oldPassword)
             {
-                $this->errors['password'] = "Password must be at least 8 characters long.";
+                $this->errors['old-password'] = "Old password does not match.";
             }
-            if (strlen($password) > 50)
+            else
             {
-                $this->errors['password'] = "Password must be less than 50 characters long.";
-            }
-            if (!preg_match("#[0-9]+#", $password))
-            {
-                $this->errors['password'] = "Password must have at least 1 number.";
-            }
-            if (!preg_match("#[A-Z]+#", $password))
-            {
-                $this->errors['password'] = "Password must have at least 1 uppercase character.";
-            }
-            if (!preg_match("#[a-z]+#", $password))
-            {
-                $this->errors['password'] = "Password must have at least 1 lowercase character.";
+                if(!empty($password))
+                {
+                    if (strlen($password) < 8)
+                    {
+                        $this->errors['password'] = "Password must be at least 8 characters long.";
+                    }
+                    if (strlen($password) > 50)
+                    {
+                        $this->errors['password'] = "Password must be less than 50 characters long.";
+                    }
+                    if (!preg_match("#[0-9]+#", $password))
+                    {
+                        $this->errors['password'] = "Password must have at least 1 number.";
+                    }
+                    if (!preg_match("#[A-Z]+#", $password))
+                    {
+                        $this->errors['password'] = "Password must have at least 1 uppercase character.";
+                    }
+                    if (!preg_match("#[a-z]+#", $password))
+                    {
+                        $this->errors['password'] = "Password must have at least 1 lowercase character.";
+                    }
+                }
+                else
+                {
+                    $this->errors['password'] = "You must enter a password.";
+                }
             }
         }
         else
         {
-            $this->errors['password'] = "You must enter a password.";
+            $this->errors['old-password'] = "You must enter an old password.";
         }
     }
 
