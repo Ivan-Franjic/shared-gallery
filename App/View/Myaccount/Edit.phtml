@@ -1,32 +1,73 @@
-<?php include INCLUDE_PATH .'/header.phtml'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/shared-gallery/Public/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <title>Shared gallery</title>
+</head>
+
 <body>
-    <div class="editpass">
-        <h5 class="display-5">Change Password</h5>
+
+<?php 
+    if(\Core\Auth::getInstance()->isLoggedIn()):?>
+<div class="sidebar">
+    <div class="sidebar-logo">
+    <img src="/shared-gallery/Public/images/user.jpg">
+    <p><?= \Core\Auth::getInstance()->getCurrentUser()->getUsername(); ?></p>
+        <a href="/shared-gallery/myaccount">Myaccount</a>
+    </div>
+    <ul class="sidebar-items">
+    <li class="sidebar-items-list">
+            <a href="/shared-gallery">
+                <i class='bx bx-home-alt-2'></i>
+                <p>Home</p>
+            </a>
+        </li>
+        <li class="sidebar-items-list">
+            <a href="/shared-gallery/management">
+                <i class='bx bxs-dashboard'></i>
+                <p>Management</p>
+            </a>
+        </li>
+        <li class="sidebar-items-list">
+            <a href="/shared-gallery/login/logoutSubmit">
+                <i class='bx bx-log-out'></i>
+                <p>Logout</p>
+            </a>
+        </li>
+    </ul>
+    </div>
+</div>
+<?php endif; ?>
+
+    <div class="edit">
+        <h1>Change Password</h1>
 
         <?php if (isset($message)): ?>
             <div>
-                <p class="alert-danger pt-2 pb-2 pl-2">
+                <p class="alert-danger">
                     <?php echo $message; ?>
                 </p>
             </div>
         <?php endif ?>
 
         <form action="<?= URL_ROOT;?><?= "myaccount/updatePasswordSubmit/" . $data['users']->getid();?>" method="post">
-            <div class="form-group col-md-6">
-                <label for="old_password">Old Password</label>
-                <input type="password" class="form-control mb-4" required>
-
-                <hr>
-                <label for="new_password">New Password</label>
+            <div class="form-group">
+                <label for="old-password">Old Password</label>
+                <input type="password" id="old-password" class="form-control  <?= isset($_SESSION['form_errors']['old-password']) ? 'is-invalid' : ''; ?>"
+                        name="old-password" placeholder="Old password" required>
+                        <small class="text-danger"><?= isset($_SESSION['form_errors']['old-password']) ? $_SESSION['form_errors']['old-password'] : ''; ?></small><br>
+                <label for="password">New Password</label>
                 <input type="password" id="password"
                         class="form-control  <?= isset($_SESSION['form_errors']['password']) ? 'is-invalid' : ''; ?>"
-                        name="password" placeholder="Password" required>
+                        name="password" placeholder="New password" required>
                 <small class="text-danger"><?= isset($_SESSION['form_errors']['password']) ? $_SESSION['form_errors']['password'] : ''; ?></small>
             </div>
 
-            <input class="btn btn-primary btn-block my-3" type="submit" value="Update">
+            <input class="change-pass-btn" type="submit" value="Update">
         </form>
     </div>
 </body>
-
-<?php include INCLUDE_PATH .'/footer.phtml'; ?>

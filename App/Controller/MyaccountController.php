@@ -55,22 +55,24 @@ class MyaccountController extends AbstractController
 
         $validator = new MyaccountValidator();
         $post = Input::validatePost();
+        $user_id=\Core\Auth::getInstance()->getCurrentUser()->getid();
 
         $this->session->resetFormInput();
 
-        //if($validator->validateUpdatedPassword($post))
-        //{
+        if($validator->validateUpdatedPassword($post, $post2))
+        {
             $password = $post['password'];
+            $oldpassword = $post['old-password'];
             User::update(['password' => $password], 'id', $id);
             $this->redirect('Myaccount'); 
-        //}
-        //else
-        //{
+        }
+        else
+        {
             $this->session->setFormData($validator->getData());
             $this->session->setFormErrors($validator->getErrors());
 
-            //$this->redirect('Myaccount/edit');
-        //}
+            $this->redirect('Myaccount/edit/'. $user_id);
+        }
     }
 
     public function removeSubmitAction($id)
