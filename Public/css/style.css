@@ -17,10 +17,12 @@ th,
 td {
   width: 600px;
   text-align: center;
-  border-style: solid;
-  border-collapse: collapse;
-  border-width: 1px;
-  border-color: black;
+  background-color: #10639a;
+  color: #ffffff;
+}
+
+td > a {
+  color: #ffffff;
 }
 
 .error-body {

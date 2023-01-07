@@ -24,14 +24,14 @@
         <thead class="table-head-management">
             <th>Username</th>
             <th>Email</th>
-            <th># of images</th>
+            <th>Album</th>
         </thead>
         <?php foreach ($data['gallery'] as $user): ?>
         <tbody>
             <tr>
                 <td> <?=$user->getusername(); ?></td>
                 <td> <?=$user->getemail(); ?></td>
-                <td><a href="/shared-gallery/management/album/<?= $user->user_id; ?>">Album</a></td>
+                <td><a href="/shared-gallery/management/album/<?= $user->user_id; ?>"><?= $user->username; ?>'s Album</a></td>
             </tr>
         </tbody>
         <?php endforeach;?>
