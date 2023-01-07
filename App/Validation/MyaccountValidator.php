@@ -23,11 +23,11 @@ class MyaccountValidator extends AbstractValidator
 
     private function validatePassword(string $password, string $oldpassword): void
     {
-        $oldPassword=\Core\Auth::getInstance()->getCurrentUser()->getpassword();
-
+        $hashedPassword=\Core\Auth::getInstance()->getCurrentUser()->getpassword();
+        
         if(!empty($oldpassword))
         {
-            if($oldpassword!=$oldPassword)
+            if(!password_verify($oldpassword, $hashedPassword))
             {
                 $this->errors['old-password'] = "Old password does not match.";
             }

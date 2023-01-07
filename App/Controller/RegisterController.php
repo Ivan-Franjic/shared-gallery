@@ -33,7 +33,7 @@ class RegisterController extends AbstractController
         {
             $username = $post['username'];
             $email = $post['email'];
-            $password = $post['password'];
+            $password = password_hash($post['password'], PASSWORD_DEFAULT);
 
             User::insert([
                 'username' => $username,

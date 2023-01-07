@@ -35,7 +35,7 @@ class LoginValidator extends AbstractValidator
             $user = User::getOne('email', $this->data['email']);
             $hashedPassword = $user->getpassword();
 
-            if ($hashedPassword != $password)
+            if($hashedPassword === null || !password_verify($password, $hashedPassword))
             {
                 $this->errors['login'] = "Wrong username/password combination.";
             }

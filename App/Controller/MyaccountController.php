@@ -61,7 +61,7 @@ class MyaccountController extends AbstractController
 
         if($validator->validateUpdatedPassword($post, $post2))
         {
-            $password = $post['password'];
+            $password = password_hash($post['password'], PASSWORD_DEFAULT);
             $oldpassword = $post['old-password'];
             User::update(['password' => $password], 'id', $id);
             $this->redirect('Myaccount'); 
