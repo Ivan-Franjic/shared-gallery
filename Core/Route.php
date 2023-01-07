@@ -21,14 +21,13 @@ class Route
         $this->register('GET', '500', 'Pages@serverError');
 
         $this->register('GET', 'management', 'Management@management');
-        $this->register('GET', 'test', 'Management@showphotos');
+        $this->register('GET', 'management/album/{id}', 'Management@album');
+        $this->register('POST', 'album/remove/{id}', 'Management@removeImg');
+        $this->register('POST', 'upload', 'Management@addImg');
+        $this->register('GET', 'test', 'Management@showimages');
 
         $this->register('GET', 'login', 'Pages@login');
         $this->register('GET', 'register', 'Pages@register');
-
-        $this->register('POST', '', 'Register@registerSubmit');
-        $this->register('POST', '', 'Login@loginSubmit');
-        $this->register('GET', '', 'Login@logoutSubmit');
 
         $this->register('POST', 'register/submit', 'Register@registerSubmit');
         $this->register('POST', 'login/submit', 'Login@loginSubmit');

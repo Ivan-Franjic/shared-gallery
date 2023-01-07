@@ -1,25 +1,29 @@
 <?php include_once INCLUDE_PATH .'header.phtml'; ?>
-    <body>
-    <?php include_once INCLUDE_PATH .'sidebar.phtml'; ?>
-        <div class="myaccount">
-            <?php foreach($data['users'] as $user): ?>
-        <div class="card ">
-            <img src="images/user.jpg" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title"><?= $user->getusername(); ?></h5>
-                <p class="card-text"><?= $user->getemail(); ?></p>
-            </div>
-            
-        </div>
-            <?php endforeach;?>
-        </div>
-                <a href="/shared-gallery/myaccount/edit/<?= $user->id; ?>">
-                <button class="edit-btn">Edit</button>
-            </a>
-                <form action="<?= URL_ROOT; ?>myaccount/removeSubmit/<?= $user->id; ?>" method="POST" class="delete-form">
-                    <button type="submit" class="remove-acc-btn">Remove account</button>
-                </form>
-                
-    </body>       
+<body>
+<?php include_once INCLUDE_PATH .'sidebar.phtml'; ?>
 
+<div class="sidebar-toggler">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div class="myaccount">
+    <?php foreach($data['users'] as $user): ?>
+    <div class="user-info">
+        <img src="images/user.jpg">
+        <h2><?= $user->getusername(); ?></h2>
+        <h3><?= $user->getemail(); ?></h3>
+    </div>
+    <?php endforeach;?>
+    <div class="edit-user">
+        <a href="/shared-gallery/myaccount/edit/<?= $user->id; ?>">
+            <button class="edit-btn">Edit</button>
+        </a>
+        <form action="<?= URL_ROOT; ?>myaccount/removeSubmit/<?= $user->id; ?>" method="POST" class="delete-form">
+            <button type="submit" onClick="return confirm('Delete account?')" class="remove-acc-btn">Remove account</button>
+        </form>
+    </div>
+</div>
+                
+</body>       
 <?php include_once INCLUDE_PATH . 'footer.phtml'; ?>

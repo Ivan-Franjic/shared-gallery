@@ -1,38 +1,43 @@
 <?php include INCLUDE_PATH .'/header.phtml'; ?>
 <body>
 <?php include INCLUDE_PATH .'/sidebar.phtml'; ?>
+
+<div class="sidebar-toggler">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 <div class="management">
-        <table class="table-management">
-            <thead class="table-head-management">
-                <th>Username</th>
-                <th>Email</th>
-                <th># of images</th>
-            </thead>
-        <?php foreach ($data['gallery'] as $user): ?>
-            <tbody>
-                <tr>
-                    <td> <?=$user->getusername(); ?></td>
-                    <td> <?=$user->getemail(); ?></td>
-                    <td><a href="/shared-gallery/management/album/<?= $user->user_id; ?>">Album</a></td>
-                </tr>
-            </tbody>
-            <?php endforeach;?>
-        </table>
-        <div class="file-upload">
-            <span class="drop-title">Save image to your album</span>
-            <form action="<?= URL_ROOT; ?>upload" method="POST" enctype="multipart/form-data" class="form-upload">
+    <div class="file-upload">
+        <span class="drop-title">Save image to your album</span>
+        <form action="<?= URL_ROOT; ?>upload" method="POST" enctype="multipart/form-data" class="form-upload">
             <input type="file" name="new-image">
             <button type="submit">Save image</button>
-            </form>
-            <?php if(!empty($response)) { ?>
-<div class="response <?php echo $response["type"]; ?>
-    ">
-    <?php echo $response["message"]; ?>
-</div>
-<?php }?>
+        </form>
+        <?php if(!empty($response)) { ?>
+        <div class="response <?php echo $response["type"]; ?>">
+        <?php echo $response["message"]; ?>
         </div>
+        <?php }?>
+    </div>
+    <table class="table-management">
+        <thead class="table-head-management">
+            <th>Username</th>
+            <th>Email</th>
+            <th># of images</th>
+        </thead>
+        <?php foreach ($data['gallery'] as $user): ?>
+        <tbody>
+            <tr>
+                <td> <?=$user->getusername(); ?></td>
+                <td> <?=$user->getemail(); ?></td>
+                <td><a href="/shared-gallery/management/album/<?= $user->user_id; ?>">Album</a></td>
+            </tr>
+        </tbody>
+        <?php endforeach;?>
+    </table>
+        
 </div>
-    
     
 </body>
 <?php include INCLUDE_PATH .'/footer.phtml'; ?>

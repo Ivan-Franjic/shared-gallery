@@ -45,4 +45,9 @@ class PagesController extends AbstractController
     {
         $this->view->render('Pages/500');
     }
+
+    public function invalidRequestAction(): void
+    {
+        $this->view->render('Pages/400');
+    }
 }
